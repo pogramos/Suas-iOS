@@ -89,6 +89,32 @@ public struct State {
       innerState[key] = newValue
     }
   }
+   /// Get a value for a key of specific type
+   ///
+   /// - Parameters:
+   ///   - key: the key to get the value for
+   ///   - type: the type to cast the state to
+   /// - Returns: if the key is found and if its of the passed type then return it. Otherwise return nil.
+   public subscript<Type>(forKey key: String, ofType type: Type.Type) -> Type? {
+    get {
+        return value(forKey: key, ofType: type)
+    }
+    set {
+        innerState[key] = newValue
+    }
+   }
+
+   /// Get a value for a key of specific type
+   ///
+   /// - Parameter type: the type to use for casting and fetching the state key
+   /// - Returns: if the key is found and if its of the passed type then return it. Otherwise return nil.
+   public subscript<Type>(forKeyOfType type: Type.Type) -> Type? {
+        get {
+            return value(forKeyOfType: type)
+        }
+    }
+    
+    
   
   /// Get a value for a key
   ///

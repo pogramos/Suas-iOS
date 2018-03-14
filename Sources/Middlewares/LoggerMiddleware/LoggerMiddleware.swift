@@ -113,7 +113,7 @@ public struct LoggerMiddleware: Middleware {
       LoggingParts.line(prefix: "├─ Prev state ► ", content: "\(oldState)", length: lineLength),
       LoggingParts.line(prefix: "├─ Action     ► ", content: "\(newAction)", length: lineLength),
       LoggingParts.line(prefix: "├─ Next state ► ", content: "\(newState)", length: lineLength),
-      closingLine(length: firstLine.characters.count)
+      closingLine(length: firstLine.count)
       ].joined(separator: "\n"))
   }
   
@@ -184,7 +184,7 @@ enum LoggingParts {
   static func line(prefix: String, content: String, length: Int?) -> String {
     guard let lenght = length else { return prefix + content }
     
-    let prefixLength = prefix.characters.count
+    let prefixLength = prefix.count
     let lineLength = lenght - prefixLength - 1
     var restOfString = content
     var parts: [String] = []
@@ -195,13 +195,13 @@ enum LoggingParts {
     while true {
       let prefixPart = parts.count == 0 ? firstPrefix : linesPrefix
       
-      if restOfString.characters.count < lineLength {
+      if restOfString.count < lineLength {
         parts.append(prefixPart + restOfString)
         break
       } else {
         let index = restOfString.index(restOfString.startIndex, offsetBy: lineLength)
-        let stringPart = restOfString.substring(to: index)
-        restOfString = restOfString.substring(from: index)
+        let stringPart = String(restOfString[..<index])
+        restOfString = String(restOfString[index...])
         
         parts.append(prefixPart + stringPart)
       }

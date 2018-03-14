@@ -3,10 +3,10 @@ test:
 	make test-mac
 
 test-ios:
-	xcodebuild -project Suas.xcodeproj -scheme SuasIOS -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' -sdk iphonesimulator10.3 -configuration Debug ONLY_ACTIVE_ARCH=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES test
+	xcodebuild -project Suas.xcodeproj -scheme SuasIOS -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.2' -sdk iphonesimulator11.2 -configuration Debug ONLY_ACTIVE_ARCH=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES test
 
 test-mac:
-	xcodebuild -project Suas.xcodeproj -scheme SuasMac -sdk macosx10.12 -configuration Debug ONLY_ACTIVE_ARCH=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES test
+	xcodebuild -project Suas.xcodeproj -scheme SuasMac -sdk macosx10.13 -configuration Debug ONLY_ACTIVE_ARCH=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES test
 
 clean:
 	xcodebuild -project Suas.xcodeproj -scheme SuasIOS clean -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' | xcpretty

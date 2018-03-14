@@ -116,10 +116,5 @@ class DummyFileManager: FileManager {
   override func contents(atPath path: String) -> Data? {
     return dataToReturn
   }
-  
-  override func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey : Any]? = nil) -> Bool {
-    writtenPath = path
-    writtenData = data
-    return true
-  }
+    
 }

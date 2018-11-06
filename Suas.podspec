@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Suas'
-  s.version = '1.0.0'
+  s.version = '1.1.0'
   s.license     = { :type => 'Apache License, Version 2.0',
                     :text => <<-LICENSE
                       Copyright (c) 2010 Google Inc.

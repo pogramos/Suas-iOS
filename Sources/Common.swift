@@ -45,7 +45,7 @@ extension Suas {
 
   static func log(_ string: @autoclosure () -> String) {
     #if DEBUG
-      if !enableDebugLogging { return }
+      guard enableDebugLogging else { return }
       print("🔼 Suas: \(string())")
     #endif
   }

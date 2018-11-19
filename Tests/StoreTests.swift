@@ -11,6 +11,10 @@ import XCTest
 
 class StoreTests: XCTestCase {
 
+    override func setUp() {
+        Suas.enableDebugLogging = true
+    }
+
   func testItCanGetTheFullState() {
     let store = Suas.createStore(reducer: Reducer1() + Reducer2())
 

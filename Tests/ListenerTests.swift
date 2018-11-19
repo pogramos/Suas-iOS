@@ -10,7 +10,11 @@ import XCTest
 @testable import Suas
 
 class ListenerTests: XCTestCase {
-  
+
+    override func setUp() {
+        Suas.enableDebugLogging = true
+    }
+
   func testItCanListenToAChange() {
     let store = Suas.createStore(reducer: reducer1)
     

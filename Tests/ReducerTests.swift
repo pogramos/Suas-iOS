@@ -10,6 +10,11 @@ import XCTest
 @testable import Suas
 
 class ReducerTests: XCTestCase {
+
+    override func setUp() {
+        Suas.enableDebugLogging = true
+    }
+
   func testItReducesWithABlockWithState() {
     let state = MyState1(value: 0)
     let newState = reducer1.reduce(state: state, action: IncrementAction())

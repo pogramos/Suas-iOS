@@ -48,7 +48,7 @@ public protocol SuasDynamicEquatable {
 }
 
 public extension SuasDynamicEquatable where Self: Equatable {
-  public func isEqual(to other: Any) -> Bool {
+  func isEqual(to other: Any) -> Bool {
     guard let other = other as? Self else { return false }
     return self == other
   }

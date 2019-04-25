@@ -44,7 +44,7 @@ public struct Subscription<StateType> {
   /// subscription.informWithCurrentState()
   /// ```
   public func informWithCurrentState() {
-    var stateToNotify: Any!
+    var stateToNotify: Any
 
     if let key = listener.stateKey {
 

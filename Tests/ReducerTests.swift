@@ -161,7 +161,7 @@ class ReducerTests: XCTestCase {
 
     let combine = Reducer2() + Reducer3() + Reducer1()
     let (_, keys) = combine.reduce(state: State(dictionary: state), action: IncrementAction()) as! (State, [String])
-    XCTAssertEqual(keys, ["MyState2", "MyState3", "MyState1"])
+    XCTAssertEqual(Set(keys), Set(["MyState2", "MyState3", "MyState1"]))
   }
 
   func testItGetsOnlyKeysThatChanged() {
@@ -173,7 +173,7 @@ class ReducerTests: XCTestCase {
 
     let combine = Reducer2() + Reducer3Nil() + Reducer1()
     let (_, keys) = combine.reduce(state: State(dictionary: state), action: IncrementAction()) as! (State, [String])
-    XCTAssertEqual(keys, ["MyState2", "MyState1"])
+    XCTAssertEqual(Set(keys), Set(["MyState2", "MyState1"]))
   }
 
   func testReturningNilFor1ReducerOnlyDoesNotCrash() {

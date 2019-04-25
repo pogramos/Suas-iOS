@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os
 
 
 /// LoggerMiddleware that logs the action and state when each action is received
@@ -217,6 +218,18 @@ enum LoggingParts {
 }
 
 public let defaultLogger = { (string: String) in
-  print(string)
+    #if os(macOS)
+        if #available(OSX 10.12, *) {
+            os_log("%@", string)
+        } else {
+            print("string")
+        }
+    #elseif os(iOS)
+        if #available(iOS 10.0, *) {
+            os_log("%@", string)
+        } else {
+            print("string")
+        }
+    #endif
 }
 

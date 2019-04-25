@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import os
 
 
 /// Store state is stored as a Dictionary of [StateKey: Any]
@@ -46,8 +46,20 @@ extension Suas {
 
   static func log(_ string: @autoclosure () -> String) {
     #if DEBUG
-      guard enableDebugLogging else { return }
-      print("🔼 Suas: \(string())")
+        guard enableDebugLogging else { return }
+        #if os(macOS)
+            if #available(OSX 10.12, *) {
+                os_log("🔼 Suas: %@", string())
+            } else {
+                print("🔼 Suas: \(string())")
+            }
+        #elseif os(iOS)
+            if #available(iOS 10.0, *) {
+                os_log("🔼 Suas: %@", string())
+            } else {
+                print("🔼 Suas: \(string())")
+            }
+        #endif
     #endif
   }
 
